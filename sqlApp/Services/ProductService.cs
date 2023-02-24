@@ -1,24 +1,20 @@
-﻿using sqlApp.Models;
+﻿using Microsoft.Extensions.Configuration;
+using sqlApp.Models;
 using System.Data.SqlClient;
 
 namespace sqlApp.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
-        private static string db_source = "homoro.database.windows.net";
-        private static string db_user = "captain";
-        private static string db_password = "azure@123";
-        private static string db_database = "captain";
+        private readonly IConfiguration _configuration;
 
-
+        ProductService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         private SqlConnection GetConnection()
         {
-            var _builder = new SqlConnectionStringBuilder();
-            _builder.DataSource = db_source;
-            _builder.UserID = db_user;
-            _builder.Password = db_password;
-            _builder.InitialCatalog = db_database;
-            return new SqlConnection(_builder.ConnectionString);
+            return new SqlConnection(_configuration.GetConnectionString("SQLConnection"));
         }
 
         public List<Product> GetProducts()
