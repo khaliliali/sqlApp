@@ -7,8 +7,7 @@ namespace sqlApp.Services
     public class ProductService : IProductService
     {
         private readonly IConfiguration _configuration;
-
-        ProductService(IConfiguration configuration)
+        public ProductService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -19,7 +18,7 @@ namespace sqlApp.Services
 
         public List<Product> GetProducts()
         {
-            List<Product> _product_lst = new List<Product>();
+            List<Product> _product_list = new List<Product>();
             string _statement = "SELECT ProductID,ProductName,Quantity from Products";
             SqlConnection _connection = GetConnection();
 
@@ -38,11 +37,11 @@ namespace sqlApp.Services
                         Quantity = _reader.GetInt32(2)
                     };
 
-                    _product_lst.Add(_product);
+                    _product_list.Add(_product);
                 }
             }
             _connection.Close();
-            return _product_lst;
+            return _product_list;
         }
 
     }

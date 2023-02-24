@@ -7,16 +7,17 @@ namespace sqlApp.Pages
 {
     public class IndexModel : PageModel
     {
-
-        public List<Product> Products;
         private readonly IProductService _productService;
 
         public IndexModel(IProductService productService)
         {
             _productService = productService;
         }
+
+
+        public List<Product> Products;
         public void OnGet()
-        { 
+        {
             Products = _productService.GetProducts();
 
         }
