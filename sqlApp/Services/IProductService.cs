@@ -4,6 +4,10 @@ namespace sqlApp.Services
 {
     public interface IProductService
     {
-        List<Product> GetProducts();
+        // Using AZ-Function
+        Task<List<Product>> GetProducts();
+
+        // Old Version
+        //List<Product> GetProducts();
     }
 }

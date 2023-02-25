@@ -18,7 +18,12 @@ namespace sqlApp.Pages
         public List<Product> Products;
         public void OnGet()
         {
-            Products = _productService.GetProducts();
+
+            // Using AZ-Function
+            Products = _productService.GetProducts().GetAwaiter().GetResult();
+
+            // Old Version
+            //Products = _productService.GetProducts()
 
         }
 
