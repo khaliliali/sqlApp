@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "sqlApp/bin/Release/net6.0/publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/b719a45f-0076-46df-a419-5f14d6aa9f72/resourceGroups/dbRG/providers/Microsoft.Web/sites/homorowebapp"
+}
